@@ -1,14 +1,25 @@
 import { Raleway } from "next/font/google"
 
-import { createTheme, lighten } from "@mui/material"
-import { darken } from "@mui/material"
+import { extendTheme, darken } from "@mui/material"
 
 const raleway = Raleway({
 	weight: ["400"],
 	subsets: ["latin"],
 })
 
-const commonTheme = {
+const lightColors = {
+	primary: "#ffffff",
+	secondary: "#52b785",
+	accent: "#4e8bac",
+}
+
+const darkColors = {
+	primary: "#070707",
+	secondary: "#4e8bac",
+	accent: "#ff6969",
+}
+
+export const theme = extendTheme({
 	typography: {
 		fontFamily: raleway.style.fontFamily,
 	},
@@ -25,101 +36,27 @@ const commonTheme = {
 				},
 			},
 		},
-		MuiBox: {
-			styleOverrides: {
-				root: {
-					display: "flex",
-					flexDirection: "column",
-					gap: 2,
-				},
-			},
-		},
-	},
-}
-
-const lightColors = {
-	primary: "#ffffff",
-	secondary: "#52b785",
-	accent: "#4e8bac",
-}
-
-const lightTheme = createTheme({
-	...commonTheme,
-	palette: {
-		mode: "light",
-		background: {
-			default: lightColors.primary,
-		},
-	},
-	components: {
-		MuiLink: {
-			styleOverrides: {
-				root: {
-					color: lightColors.accent,
-					fontWeight: "bold",
-					"&:hover": {
-						color: darken(lightColors.primary, 0.2),
-					},
-				},
-			},
-		},
-		MuiPaper: {
-			styleOverrides: {
-				root: {
-					backgroundColor: lighten(lightColors.primary, 0.1),
-				},
-			},
-		},
-		MuiAppBar: {
-			styleOverrides: {
-				root: {
-					backgroundColor: lightColors.secondary,
-				},
-			},
-		},
-	},
-})
-
-const darkColors = {
-	primary: "#070707",
-	secondary: "#4e8bac",
-	accent: "#ff6969",
-}
-
-const darkTheme = createTheme({
-	...commonTheme,
-	palette: {
-		mode: "dark",
-		background: {
-			default: darkColors.primary,
-		},
-	},
-	components: {
-		MuiLink: {
-			styleOverrides: {
-				root: {
-					color: darkColors.accent,
-					fontWeight: "bold",
-					"&:hover": {
-						color: darken(darkColors.accent, 0.2),
-					},
-				},
-			},
-		},
-		MuiPaper: {
-			styleOverrides: {
-				root: {
-					backgroundColor: lighten(darkColors.primary, 0.1),
-				},
-			},
-		},
 		MuiCircularProgress: {
 			defaultProps: {
 				size: 25,
 			},
 		},
 	},
+	colorSchemes: {
+		light: {
+			palette: {
+				background: {
+					default: lightColors.primary,
+					paper: darken(lightColors.primary, 0.05),
+				},
+			},
+		},
+		dark: {
+			palette: {
+				background: {
+					default: darkColors.primary,
+				},
+			},
+		},
+	},
 })
-
-export const getTheme = (mode: "light" | "dark") =>
-	mode === "light" ? lightTheme : darkTheme

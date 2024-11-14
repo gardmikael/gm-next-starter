@@ -2,16 +2,9 @@ import type { Metadata } from "next"
 import NextTopLoader from "nextjs-toploader"
 import { ReactNode } from "react"
 import { AppBar } from "../components/layout/AppBar"
-import { Container } from "@mui/material"
-
-import { Lato } from "next/font/google"
+import { Container, getInitColorSchemeScript } from "@mui/material"
 import { Providers } from "@/context/Providers"
-
-const lato = Lato({
-	weight: ["400"],
-	subsets: ["latin"],
-})
-
+import InitColorSchemeScript from "@mui/material/InitColorSchemeScript"
 export const metadata: Metadata = {
 	title: "Next starter",
 	icons: [

@@ -24,7 +24,6 @@ export const changePasswordAction = async (
 		await rateLimitByIp({ key: "change-password", limit: 2, window: 30000 })
 		await changePasswordUseCase(token, password)
 	} catch (error) {
-		// log error message
 		if (
 			error instanceof AuthenticationError ||
 			error instanceof TokenNotFoundError

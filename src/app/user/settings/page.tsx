@@ -1,18 +1,9 @@
 import { getCurrentUser } from "@/db/sessions"
 import { getUserProfileUseCase } from "@/use-cases/users"
-import {
-	Card,
-	Box,
-	TextField,
-	CardContent,
-	CardHeader,
-	Skeleton,
-	Button,
-} from "@mui/material"
-import { cache, Suspense, useActionState } from "react"
-import { displayNameSchema } from "../../../../schema"
-import { updateDisplayNameAction } from "./actions"
+import { cache, Suspense } from "react"
 import { UserSettingsForm } from "@/components/user/settings/UserSettingsForm"
+import { FormSkeleton } from "@/components/surfaces/FormSkeleton"
+import { redirect } from "next/navigation"
 
 const profilerLoader = cache(getUserProfileUseCase)
 
@@ -24,17 +15,16 @@ export default async function SettingsPage() {
 
 	if (isSignedIn) {
 		profile = await profilerLoader(user.id)
+	} else {
+		profile = { id: -1, displayName: "Guest" }
 	}
 
-	if (!profile) {
-		return <Skeleton />
-	}
+	/* if (!profile) {
+		redirect("/sign-in")
+	} */
 	return (
-		<Card>
-			<CardHeader title='Innstillinger' />
-			<CardContent>
-				<UserSettingsForm profile={profile} />
-			</CardContent>
-		</Card>
+		<Suspense fallback={<FormSkeleton />}>
+			<UserSettingsForm profile={profile} />
+		</Suspense>
 	)
 }

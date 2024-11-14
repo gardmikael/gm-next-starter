@@ -8,34 +8,25 @@ import {
 	CardContent,
 	CardHeader,
 	Divider,
+	Link,
 	Typography,
 } from "@mui/material"
 import { GoogleIcon } from "@/components/icons/GoogleIcon"
 import { MagicLinkForm } from "@/components/auth/MagicLinkForm"
 import GoogleSignIn from "@/components/auth/GoogleSignIn"
+import { ResponsiveCard } from "@/components/surfaces/ResponsiveCard"
 
 export default function SignInPage() {
 	return (
-		<Card sx={{ maxWidth: "500px", mx: "auto" }}>
+		<ResponsiveCard>
 			<CardHeader title='Logg inn' />
 			<CardContent>
 				<GoogleSignIn />
-				{/* <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-					<Button
-						fullWidth
-						variant='outlined'
-						startIcon={<GoogleIcon />}
-						href='/api/login/google'
-					>
-						Logg inn med Google
-					</Button>
-				</Box> */}
 				<Divider sx={{ my: 4 }}>eller</Divider>
-
 				<MagicLinkForm />
-				{/* <Divider sx={{ my: 4 }}>andre alternativ</Divider>
-			<EmailSignIn /> */}
+				<Divider sx={{ my: 4 }}>eller</Divider>
+				<Link href='/sign-in/email'>Logg inn med epost og passord</Link>
 			</CardContent>
-		</Card>
+		</ResponsiveCard>
 	)
 }

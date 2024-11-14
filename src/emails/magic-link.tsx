@@ -19,7 +19,8 @@ import { applicationName } from "@/app-config"
 export const BASE_URL = process.env.HOST_NAME
 
 export function MagicLinkEmail({ token }: { token: string }) {
-	const previewText = `You're been invited to a group!`
+	const previewText = `Invitasjon til ${applicationName}`
+
 	return (
 		<Html>
 			<Head />
@@ -30,7 +31,7 @@ export function MagicLinkEmail({ token }: { token: string }) {
 						<Container className='mx-auto my-[40px] w-[465px] rounded border border-solid border-[#eaeaea] p-[20px]'>
 							<Section className='mt-[32px]'>
 								<Img
-									src={`${BASE_URL}/group.jpeg`}
+									src={`${BASE_URL}/group.jpg`}
 									width='160'
 									height='48'
 									alt='StarterKit'
@@ -40,7 +41,7 @@ export function MagicLinkEmail({ token }: { token: string }) {
 
 							<Section className='mb-[32px] mt-[32px] text-center'>
 								<Text className='mb-8 text-[14px] font-medium leading-[24px] text-black'>
-									You&apos;re magic link login is below, click to login. group.
+									{`Magisk lenke til ${applicationName} ligger under, klikk for å logge inn.`}
 								</Text>
 
 								<Text className='text-[14px] font-medium leading-[24px] text-black'>
@@ -49,7 +50,7 @@ export function MagicLinkEmail({ token }: { token: string }) {
 										target='_blank'
 										className='text-[#2754C5] underline'
 									>
-										Login using Magic Link
+										Logg inn med magisk lenke
 									</Link>
 								</Text>
 							</Section>

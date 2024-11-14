@@ -14,6 +14,7 @@ import { registrationSchema } from "../../../../schema"
 import { parseWithZod } from "@conform-to/zod"
 import { getInputProps, useForm } from "@conform-to/react"
 import { useActionState } from "react"
+import { ResponsiveCard } from "@/components/surfaces/ResponsiveCard"
 
 export default function RegisterPage() {
 	const [state, action, isPending] = useActionState(signUpAction, null)
@@ -27,7 +28,7 @@ export default function RegisterPage() {
 	})
 
 	return (
-		<Card sx={{ maxWidth: "80%", mx: "auto" }}>
+		<ResponsiveCard>
 			<CardHeader title='Registrer deg' />
 			<CardContent>
 				<Box
@@ -75,6 +76,6 @@ export default function RegisterPage() {
 					</Button>
 				</Box>
 			</CardContent>
-		</Card>
+		</ResponsiveCard>
 	)
 }

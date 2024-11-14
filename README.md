@@ -4,7 +4,6 @@ This is a Next.js template which includes the following technology
 
 - Next.js (with app router)
 - Drizzle orm
-- Lucia auth
 - postgres
 - Resend emails
 
@@ -19,9 +18,10 @@ The point of this template is to allow you to setup a project which has a lot of
 ## Running locally
 
 1. `cp .env.sample .env` (fill out the necessary information for email support with resend, and your google oauth info, more info below)
-1. `npm i`
-1. `npx drizzle-kit push` (will create your sqlite database)
-1. `npm run dev`
+2. `npm i`
+3. `docker compose up -d` (will spin up a postgres container)
+4. `npx drizzle-kit push` (will create your postgres database)
+5. `npm run dev`
 
 ### Setting up Google Provider
 

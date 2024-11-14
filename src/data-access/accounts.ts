@@ -3,7 +3,6 @@ import { accounts, profiles } from "@/db/schema"
 import { and, eq } from "drizzle-orm"
 import crypto from "crypto"
 import { UserId } from "@/types"
-import { profile } from "console"
 
 const ITERATIONS = 10000
 

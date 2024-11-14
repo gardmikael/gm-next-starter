@@ -75,43 +75,45 @@ export const ResetPasswordForm = () => {
 						}}
 					/>
 				</Box>
-				<Box
-					component='form'
-					id={form.id}
-					action={action}
-					onSubmit={form.onSubmit}
-					sx={{ gap: 4, display: "flex", flexDirection: "column" }}
-				>
-					<TextField
-						{...getInputProps(fields.password, {
-							type: "password",
-						})}
-						key={fields.password.key}
-						label='Passord'
-						error={!!fields.password.errors}
-						helperText={fields.password.errors}
-						autoComplete='new-password'
-					/>
-					<TextField
-						{...getInputProps(fields.passwordConfirmation, {
-							type: "password",
-						})}
-						key={fields.passwordConfirmation.key}
-						label='Gjenta passord'
-						error={!!fields.passwordConfirmation.errors}
-						helperText={fields.passwordConfirmation.errors}
-						autoComplete='new-password'
-					/>
-					<input
-						{...getInputProps(fields.token, {
-							type: "hidden",
-						})}
-						key={fields.token.key}
-					/>
-					<Button type='submit' variant='contained' fullWidth>
-						Oppdater
-					</Button>
-				</Box>
+				{!success && (
+					<Box
+						component='form'
+						id={form.id}
+						action={action}
+						onSubmit={form.onSubmit}
+						sx={{ gap: 4, display: "flex", flexDirection: "column" }}
+					>
+						<TextField
+							{...getInputProps(fields.password, {
+								type: "password",
+							})}
+							key={fields.password.key}
+							label='Passord'
+							error={!!fields.password.errors}
+							helperText={fields.password.errors}
+							autoComplete='new-password'
+						/>
+						<TextField
+							{...getInputProps(fields.passwordConfirmation, {
+								type: "password",
+							})}
+							key={fields.passwordConfirmation.key}
+							label='Gjenta passord'
+							error={!!fields.passwordConfirmation.errors}
+							helperText={fields.passwordConfirmation.errors}
+							autoComplete='new-password'
+						/>
+						<input
+							{...getInputProps(fields.token, {
+								type: "hidden",
+							})}
+							key={fields.token.key}
+						/>
+						<Button type='submit' variant='contained' fullWidth>
+							Oppdater
+						</Button>
+					</Box>
+				)}
 			</CardContent>
 		</Card>
 	)

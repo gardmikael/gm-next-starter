@@ -31,9 +31,7 @@ export const AppBar = async () => {
 				},
 			}}
 		>
-			<Container>
-				<AppBarContent profile={profile} />
-			</Container>
+			<AppBarContent profile={profile} />
 		</MuiAppBar>
 	)
 }

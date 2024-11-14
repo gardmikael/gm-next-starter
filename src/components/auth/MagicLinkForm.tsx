@@ -9,8 +9,6 @@ export const MagicLinkForm = () => {
 	const [state, action, isPending] = useActionState(signInMagicLinkAction, null)
 
 	const [form, fields] = useForm({
-		// @ts-ignore
-		state,
 		onValidate({ formData }) {
 			return parseWithZod(formData, { schema: magicSchema })
 		},
@@ -37,10 +35,11 @@ export const MagicLinkForm = () => {
 					{...getInputProps(fields.email, {
 						type: "email",
 					})}
-					placeholder='Epost'
+					key={fields.email.key}
+					label='Epost'
 					variant='outlined'
 					fullWidth
-					required
+					size='small'
 				/>
 
 				<Button type='submit' variant='outlined' fullWidth disabled={isPending}>

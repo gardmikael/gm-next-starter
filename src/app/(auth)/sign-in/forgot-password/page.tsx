@@ -2,10 +2,8 @@
 
 import { resetPasswordAction } from "./actions"
 import {
-	Alert,
 	Box,
 	Button,
-	Card,
 	CardContent,
 	CardHeader,
 	CircularProgress,
@@ -16,6 +14,8 @@ import { parseWithZod } from "@conform-to/zod"
 import { resetPasswordSchema } from "../../../../../schema"
 import { useActionState } from "react"
 import { Intent } from "@/types"
+import { ResponsiveCard } from "@/components/surfaces/ResponsiveCard"
+import FormAlert from "@/components/feedback/FormAlert"
 
 export default function ForgotPasswordPage() {
 	const [state, action, isPending] = useActionState(resetPasswordAction, null)
@@ -30,7 +30,7 @@ export default function ForgotPasswordPage() {
 	const success = state?.status === "success"
 
 	return (
-		<Card sx={{ width: "60%", mx: "auto" }}>
+		<ResponsiveCard>
 			<CardHeader title='Glemt passordet?' />
 			<CardContent>
 				<Box
@@ -53,16 +53,17 @@ export default function ForgotPasswordPage() {
 						/>
 					)}
 
-					{!success && state?.intent?.type == Intent.Server && (
-						<Alert color='error'>{JSON.stringify(state?.error)}</Alert>
-					)}
+					<FormAlert
+						visibleOn={!!(!success && state?.error && "server" in state.error)}
+						type='error'
+						msg={state?.error?.server ? state.error.server[0] : ""}
+					/>
+					<FormAlert
+						visibleOn={success}
+						type='success'
+						msg='Vi har sendt deg en e-post med instruksjoner for å tilbakestille passordet ditt'
+					/>
 
-					{success && (
-						<Alert color='success' variant='filled'>
-							Vi har sendt deg en e-post med instruksjoner for å tilbakestille
-							passordet ditt
-						</Alert>
-					)}
 					{!success && (
 						<Button
 							type='submit'
@@ -75,6 +76,6 @@ export default function ForgotPasswordPage() {
 					)}
 				</Box>
 			</CardContent>
-		</Card>
+		</ResponsiveCard>
 	)
 }

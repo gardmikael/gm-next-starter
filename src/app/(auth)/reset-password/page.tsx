@@ -2,11 +2,11 @@
 
 import { Suspense } from "react"
 import { ResetPasswordForm } from "@/components/auth/ResetPasswordForm"
-import { Skeleton } from "@mui/material"
+import { FormSkeleton } from "@/components/surfaces/FormSkeleton"
 
 export default function ResetPasswordPage() {
 	return (
-		<Suspense fallback={<Skeleton />}>
+		<Suspense fallback={<FormSkeleton />}>
 			<ResetPasswordForm />
 		</Suspense>
 	)

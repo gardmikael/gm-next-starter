@@ -31,4 +31,4 @@ export enum Intent {
 	Client = "client",
 }
 
-export type IntentType = "server" | "client"
+export type IntentType = keyof typeof Intent
