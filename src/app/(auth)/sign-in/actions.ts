@@ -24,7 +24,6 @@ export const signInMagicLinkAction = async (
 		await rateLimitByKey({ key: email, limit: 1, window: 30000 })
 		await sendMagicLinkUseCase(email)
 	} catch (error) {
-		console.error(error)
 		return {
 			success: false,
 			error: "Noe gikk galt",

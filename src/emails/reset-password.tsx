@@ -22,7 +22,7 @@ export function ResetPasswordEmail({ token }: { token: string }) {
 	return (
 		<Html>
 			<Head />
-			<Preview>Reset your password</Preview>
+			<Preview>Tilbakestill passord</Preview>
 			<Tailwind>
 				<React.Fragment>
 					<Body className='mx-auto my-auto bg-white font-sans'>
@@ -39,7 +39,7 @@ export function ResetPasswordEmail({ token }: { token: string }) {
 
 							<Section className='mb-[32px] mt-[32px] text-center'>
 								<Text className='mb-8 text-[14px] font-medium leading-[24px] text-black'>
-									Click the following link to reset your password
+									Klikk på knappen nedenfor for å tilbakestille passordet ditt.
 								</Text>
 
 								<Text className='text-[14px] font-medium leading-[24px] text-black'>
@@ -48,7 +48,7 @@ export function ResetPasswordEmail({ token }: { token: string }) {
 										target='_blank'
 										className='text-[#2754C5] underline'
 									>
-										Reset Password
+										Tilbakestill passord
 									</Link>
 								</Text>
 							</Section>

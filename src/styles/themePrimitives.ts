@@ -1,5 +1,4 @@
 import { Raleway } from "next/font/google"
-
 import { extendTheme, darken } from "@mui/material"
 
 const raleway = Raleway({

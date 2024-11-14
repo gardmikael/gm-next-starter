@@ -22,7 +22,7 @@ export function VerifyEmail({ token }: { token: string }) {
 	return (
 		<Html>
 			<Head />
-			<Preview>Verify your Email</Preview>
+			<Preview>Bekreft e-post</Preview>
 			<Tailwind>
 				<React.Fragment>
 					<Body className='mx-auto my-auto bg-white font-sans'>
@@ -39,7 +39,7 @@ export function VerifyEmail({ token }: { token: string }) {
 
 							<Section className='mb-[32px] mt-[32px] text-center'>
 								<Text className='mb-8 text-[14px] font-medium leading-[24px] text-black'>
-									Click the following link to verify your email
+									Klikk på knappen nedenfor for å bekrefte e-posten din.
 								</Text>
 
 								<Text className='text-[14px] font-medium leading-[24px] text-black'>
@@ -48,7 +48,7 @@ export function VerifyEmail({ token }: { token: string }) {
 										target='_blank'
 										className='text-[#2754C5] underline'
 									>
-										Verify Email
+										Bekreft e-post
 									</Link>
 								</Text>
 							</Section>

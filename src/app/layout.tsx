@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import NextTopLoader from "nextjs-toploader"
 import { ReactNode } from "react"
 import { AppBar } from "../components/layout/AppBar"
-import { Container, getInitColorSchemeScript } from "@mui/material"
+import { Container } from "@mui/material"
 import { Providers } from "@/context/Providers"
-import InitColorSchemeScript from "@mui/material/InitColorSchemeScript"
+
 export const metadata: Metadata = {
 	title: "Next starter",
 	icons: [

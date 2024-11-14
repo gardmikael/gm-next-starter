@@ -49,7 +49,7 @@ export const ResetPasswordForm = () => {
 						}}
 						type='success'
 					>
-						<Box sx={{ my: 2 }}>
+						<Box sx={{ mt: 2 }}>
 							<Button
 								LinkComponent={Link}
 								variant='contained'

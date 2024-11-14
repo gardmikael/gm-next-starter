@@ -16,7 +16,6 @@ import { useState, MouseEvent } from "react"
 import MenuIcon from "@mui/icons-material/Menu"
 import { Profile } from "@/db/schema"
 import { usePathname } from "next/navigation"
-import ModeToggle from "./ModeToggle"
 
 const pages: string[] = []
 
@@ -131,7 +130,6 @@ export const AppBarContent = ({ profile }: AppBarProps) => {
 					))}
 				</Box>
 
-				{/* <ModeToggle /> */}
 				<Box sx={{ flexGrow: 0 }}>
 					{profile && (
 						<Tooltip title='Åpne innstillinger'>
@@ -167,6 +165,9 @@ export const AppBarContent = ({ profile }: AppBarProps) => {
 					>
 						<MenuItem component='a' href='/api/signout'>
 							Logg ut
+						</MenuItem>
+						<MenuItem component='a' href='/user/settings'>
+							Innstillinger
 						</MenuItem>
 					</Menu>
 				</Box>

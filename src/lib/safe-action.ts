@@ -4,7 +4,7 @@ import { assertAuthenticated } from "@/db/sessions"
 
 function shapeErrors({ err }: any) {
 	const isAllowedError = err instanceof PublicError
-	// let's all errors pass through to the UI so debugging locally is easier
+
 	const isDev = process.env.NODE_ENV === "development"
 	if (isAllowedError || isDev) {
 		console.error(err)

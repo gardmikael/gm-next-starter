@@ -25,7 +25,6 @@ export const signInAction = async (_prevState: unknown, formData: FormData) => {
 			const user = await signInUseCase(email, password)
 			await setSession(user.id)
 		} catch (error) {
-			console.error(error)
 			return {
 				success: false,
 				intent: {
@@ -35,7 +34,6 @@ export const signInAction = async (_prevState: unknown, formData: FormData) => {
 			}
 		}
 	} catch (error) {
-		console.error(error)
 		return {
 			success: false,
 			error: "Noe gikk galt",

@@ -70,7 +70,7 @@ export async function registerUserUseCase(email: string, password: string) {
 	const token = await createVerifyEmailToken(user.id)
 	await sendEmail(
 		email,
-		`Verify your email for ${applicationName}`,
+		`Verifiser e-posten din for ${applicationName}`,
 		<VerifyEmail token={token} />,
 	)
 
@@ -118,7 +118,7 @@ export async function resetPasswordUseCase(email: string) {
 
 	await sendEmail(
 		email,
-		`Your password reset link for ${applicationName}`,
+		`Lenken din for å nullstille passordet for ${applicationName}`,
 		<ResetPasswordEmail token={token} />,
 	)
 }

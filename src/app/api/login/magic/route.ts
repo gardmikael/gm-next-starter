@@ -17,7 +17,7 @@ export async function GET(request: Request): Promise<Response> {
 		}
 
 		const user = await loginWithMagicLinkUseCase(token)
-		console.log("setting session")
+
 		await setSession(user.id)
 
 		return new Response(null, {

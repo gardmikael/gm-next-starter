@@ -1,25 +1,23 @@
 "use client"
 
-import { Card } from "@/components/Card"
-import { Box, Button, Typography } from "@mui/material"
-import Link from "next/link"
+import { ResponsiveCard } from "@/components/surfaces/ResponsiveCard"
+import { Box, Button, CardContent, CardHeader, Typography } from "@mui/material"
 
 export default function MagicLinkPage() {
 	return (
-		<Box>
-			<Card>
-				<Typography variant='h2' component='h1'>
-					Utgått token
-				</Typography>
+		<ResponsiveCard>
+			<CardHeader title='Utgått token' />
+			<CardContent>
 				<Typography variant='body1'>
 					Beklager, tokenet har enten utgått eller re allerede brukt. Vennligst
 					prøv å logge inn igjen
 				</Typography>
-
-				<Button LinkComponent={Link} variant='contained' href='/sign-in'>
-					Logg inn
-				</Button>
-			</Card>
-		</Box>
+				<Box sx={{ mt: 2 }}>
+					<Button variant='outlined' href='/sign-in'>
+						Logg inn
+					</Button>
+				</Box>
+			</CardContent>
+		</ResponsiveCard>
 	)
 }
