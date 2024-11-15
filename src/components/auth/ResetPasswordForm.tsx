@@ -1,22 +1,18 @@
 "use client"
 
 import { changePasswordAction } from "@/app/(auth)/reset-password/actions"
-import { getInputProps, useForm } from "@conform-to/react"
+import { getInputProps, SubmissionResult, useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
 import {
-	Alert,
-	AlertTitle,
 	Box,
 	Button,
 	Card,
 	CardContent,
 	CardHeader,
-	Link,
 	TextField,
-	Typography,
 } from "@mui/material"
 import { useSearchParams } from "next/navigation"
-import { useActionState, useEffect } from "react"
+import { useActionState } from "react"
 import { resetPasswordTokenSchema } from "../../../schema"
 import FormAlert from "../feedback/FormAlert"
 
@@ -40,41 +36,11 @@ export const ResetPasswordForm = () => {
 		<Card sx={{ width: "60%", mx: "auto" }}>
 			<CardHeader title='Oppdater passord' />
 			<CardContent>
-				<Box sx={{ mb: 2, display: "flex", flexDirection: "column" }}>
-					<FormAlert
-						visibleOn={success}
-						msg={{
-							title: "Passord oppdaert",
-							body: "Ditt passord har blitt oppdatert.",
-						}}
-						type='success'
-					>
-						<Box sx={{ mt: 2 }}>
-							<Button
-								LinkComponent={Link}
-								variant='contained'
-								href='/sign-in/email'
-							>
-								Logg inn med nytt passord
-							</Button>
-						</Box>
-					</FormAlert>
-					<FormAlert
-						type='error'
-						visibleOn={!success && !!state?.error}
-						msg={{
-							title: "Feil",
-							body: state?.error as string,
-						}}
-					/>
-					<FormAlert
-						type='error'
-						visibleOn={!token}
-						msg={{
-							body: "Token mangler",
-						}}
-					/>
-				</Box>
+				<Alerts
+					success={state?.status === "success"}
+					tokenMissing={!token}
+					msg={state?.error as string}
+				/>
 				{!success && (
 					<Box
 						component='form'
@@ -116,5 +82,49 @@ export const ResetPasswordForm = () => {
 				)}
 			</CardContent>
 		</Card>
+	)
+}
+
+const Alerts = ({
+	success,
+	tokenMissing,
+	msg = "Noe gikk galt",
+}: {
+	success: boolean
+	tokenMissing: boolean
+	msg?: string
+}) => {
+	return (
+		<Box sx={{ mb: 2, display: "flex", flexDirection: "column" }}>
+			<FormAlert
+				visibleOn={success}
+				msg={{
+					title: "Passord oppdaert",
+					body: "Ditt passord har blitt oppdatert.",
+				}}
+				type='success'
+			>
+				<Box sx={{ mt: 2 }}>
+					<Button variant='contained' href='/sign-in/email'>
+						Logg inn med nytt passord
+					</Button>
+				</Box>
+			</FormAlert>
+			<FormAlert
+				type='error'
+				visibleOn={!success}
+				msg={{
+					title: "Feil",
+					body: msg,
+				}}
+			/>
+			<FormAlert
+				visibleOn={tokenMissing}
+				type='error'
+				msg={{
+					body: "Token mangler",
+				}}
+			/>
+		</Box>
 	)
 }
