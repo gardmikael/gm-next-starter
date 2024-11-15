@@ -1,7 +1,7 @@
 "use client"
 
 import { changePasswordAction } from "@/app/(auth)/reset-password/actions"
-import { getInputProps, SubmissionResult, useForm } from "@conform-to/react"
+import { getInputProps, useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
 import {
 	Box,

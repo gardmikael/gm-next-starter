@@ -17,38 +17,36 @@ export const MagicLinkForm = () => {
 	})
 
 	return (
-		<>
-			<Box
-				component='form'
-				id={form.id}
-				onSubmit={form.onSubmit}
-				action={action}
-				sx={{
-					display: "flex",
-					justifyContent: "center",
-					flexDirection: "column",
-					alignItems: "center",
-					gap: 4,
-				}}
-			>
-				<TextField
-					{...getInputProps(fields.email, {
-						type: "email",
-					})}
-					key={fields.email.key}
-					label='Epost'
-					variant='outlined'
-					fullWidth
-					size='small'
-				/>
+		<Box
+			component='form'
+			id={form.id}
+			onSubmit={form.onSubmit}
+			action={action}
+			sx={{
+				display: "flex",
+				justifyContent: "center",
+				flexDirection: "column",
+				alignItems: "center",
+				gap: 4,
+			}}
+		>
+			<TextField
+				{...getInputProps(fields.email, {
+					type: "email",
+				})}
+				key={fields.email.key}
+				label='Epost'
+				variant='outlined'
+				fullWidth
+				size='small'
+			/>
 
-				<Button type='submit' variant='outlined' fullWidth disabled={isPending}>
-					{isPending ? <CircularProgress /> : "Send meg en lenke"}
-				</Button>
-				{state?.error && (
-					<Alert severity='error'>{JSON.stringify(state.error)}</Alert>
-				)}
-			</Box>
-		</>
+			<Button type='submit' variant='outlined' fullWidth disabled={isPending}>
+				{isPending ? <CircularProgress /> : "Send meg en lenke"}
+			</Button>
+			{state?.error && (
+				<Alert severity='error'>{JSON.stringify(state.error)}</Alert>
+			)}
+		</Box>
 	)
 }
